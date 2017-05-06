@@ -4,4 +4,7 @@ import os
 def create_project_folder(directory):
 	if not os.path.exists(directory):
 		print ('Creating new path '+ directory)
-		 
+		os.makedirs(directory)
+
+
+create_project_folder('thenewboston')
