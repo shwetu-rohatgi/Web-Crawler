@@ -36,7 +36,7 @@ class spider():
 		Spider.add_links_to_queue(Spider.gather_links(page_url))  #first we gather all the single page urls from page_url into a handle and name it gather_links and then we add these urls into queue using the function add_links_to_queue.
 		Spider.queue.remove(page_url)   #removes already crawled urls from queue set.
 		Spider.crawled.add(page_url)	#adds the removed urls to crawled set.
-		Spider.make_changes_to_files    #changes made into set must be made permanently into files.
+		Spider.make_changes_to_files()    #changes made into set must be made permanently into files.
 
 	@staticmethod
 	def gather_links(page_url):
@@ -54,10 +54,19 @@ class spider():
 		return finder.page_links()  #returns page address after successful running of try block
 
 
-	def add_links_to_queue():
-		pass	
+
+
+	def add_links_to_queue(links):
+		for url in links:
+			if url in Spider.queue:
+				continue
+			if url in Spider.crawled:
+				continue
+			if url in Spider.domain_name:
+				continue		
 
 	def make_changes_to_files():
-		pass
+		set_to_file(Spider.queue,Spider.queue_files)
+		set_to_file(Spider.queue,Spider.queue_files)
 
 
