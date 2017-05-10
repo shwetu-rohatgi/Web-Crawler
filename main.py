@@ -38,8 +38,3 @@ def set_to_file(links,file_name):
 	for link in links:
 		append_to_file(file_name,link)
 
-
-	
-
-create_project_folder('thenewboston')
-create_project_file('thenewboston','www.thenewboston.com')

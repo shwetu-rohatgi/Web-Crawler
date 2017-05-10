@@ -43,7 +43,7 @@ class spider():
 		html_string = ""
 		try:
 			response = urlopen(page_url)     #returns 0's and 1's string as response.
-			if not response.getheader('Content-Type') == 'text/html':
+			if response.getheader('Content-Type') == 'text/html':
 				html_bytes = response.read()  #reads 0's and 1's and stores them into variable
 				html_string = html_bytes.decode("utf-8")   #variable is converted into html format
 			finder = LinkFinder(Spider.base_url, page_url) 
