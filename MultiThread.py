@@ -26,15 +26,15 @@ def create_jobs():
 	crawl()
 
 def create_spider():
-	for i in range NUMBER_OF_THREADS:
-		t = theading.Thread(target = work)
+	for i in range(NUMBER_OF_THREADS):
+		t = threading.Thread(target = work)
 		t.daemon = True #once the MutliThread main program dies then our main thread will be killed.
 		t.start() #built in func to start a thread.
 
 def work():
 	while True:
 		url = queue.get() #multithreaded queue is obtained and returns all the threads from there
-		Spider.crawl_page(theading.current_thread().name,url)
+		Spider.crawl_page(threading.current_thread().name,url)
 		queue.task_done() #once done it returns False and while loop ends.
 
 create_jobs()

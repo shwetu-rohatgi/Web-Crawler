@@ -14,14 +14,13 @@ def create_project_file(project_name,base_url):
 	if not os.path.isfile(crawled):
 		write_file(crawled,'')
 
-def write_file(path,data):
-	f = open(path,"w")
-	f.write(data)
-	f.close()
+def write_file(path, data):
+	with open(path, 'w') as f:
+		f.write(data)
 
 def append_to_file(path,data): #appends new links at the end of the file.
-	with open(path, 'a') as files:
-		files.write(data + '\n')
+	with open(path, 'a') as file:
+		file.write(data + '\n')
 
 def clear_file(path):
 	with open(path, 'w'):
@@ -32,6 +31,7 @@ def file_to_set(file_name):
 	with open(file_name,'rt') as f:
 		for line in f:
 			results.add(line.replace('\n',''))
+	return results
 
 def set_to_file(links,file_name):
 	clear_file(file_name)
